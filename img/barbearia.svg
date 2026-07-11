@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360" font-family="'Oswald','Arial Narrow',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17171c"/>
+      <stop offset="1" stop-color="#0e0e11"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9c884"/>
+      <stop offset="1" stop-color="#c48f2c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.1" r="0.9">
+      <stop offset="0" stop-color="#d9a441" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#d9a441" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="360" fill="url(#bg)"/>
+  <rect width="600" height="360" fill="url(#glow)"/>
+
+  <!-- barber pole stripe top -->
+  <g>
+    <clipPath id="poleClip"><rect x="0" y="0" width="600" height="10"/></clipPath>
+    <g clip-path="url(#poleClip)">
+      <rect x="-40" y="-40" width="900" height="90" fill="#0e0e11"/>
+      <g transform="rotate(45 300 5)">
+        <rect x="-200" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="-160" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="-120" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="-80" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="-40" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="0" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="40" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="80" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="120" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="160" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="200" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="240" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="280" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="320" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="360" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="400" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="440" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="480" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="520" y="-40" width="20" height="200" fill="#d9a441"/>
+        <rect x="560" y="-40" width="20" height="200" fill="#e9e2d6"/>
+        <rect x="600" y="-40" width="20" height="200" fill="#d9a441"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- razor icon -->
+  <g transform="translate(300 118)" stroke="url(#gold)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M -46 -14 C -20 -30 20 -30 46 -8 C 20 -14 -14 -8 -40 6 Z" fill="url(#gold)" stroke="none"/>
+    <line x1="-40" y1="6" x2="-64" y2="26"/>
+    <circle cx="-70" cy="31" r="6" fill="url(#gold)" stroke="none"/>
+  </g>
+
+  <text x="300" y="205" text-anchor="middle" fill="#ffffff" font-size="54" font-weight="700" letter-spacing="3">NAVALHA
+    <tspan fill="#d9a441">&amp;</tspan>CIA.</text>
+  <text x="300" y="240" text-anchor="middle" fill="#98938a" font-size="17" letter-spacing="5" font-weight="400">BARBEARIA · DESDE 1998</text>
+
+  <!-- booking pill -->
+  <g transform="translate(300 292)">
+    <rect x="-118" y="-20" width="236" height="40" rx="20" fill="#d9a441"/>
+    <text x="0" y="6" text-anchor="middle" fill="#1a1408" font-size="16" font-weight="600" letter-spacing="1.5">MARCAÇÃO ONLINE ✓</text>
+  </g>
+</svg>
