@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meteoros | Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="weatherParticles" class="weather-particles"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <button class="icon-btn" aria-label="Menu">☰</button>
+      <h1>METEOROS</h1>
+    </div>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Analytics</a>
+    </nav>
+  </header>
+
+  <main class="app-layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <p class="label">Pesquisar localização</p>
+        <form class="search-box" id="weatherForm">
+          <span>📍</span>
+          <input id="cityInput" type="text" placeholder="Ex: Lisboa" autocomplete="off" />
+          <button type="submit">🔎</button>
+        </form>
+
+        <button id="locationBtn" class="location-btn">
+      📍 Usar minha localização
+        </button>
+        <p id="message" class="message"></p>
+
+        <p id="loading" class="loading hidden">
+          A carregar...
+        </p>
+      </section>
+
+      <section class="panel saved-panel">
+        <p class="label">Observatórios</p>
+        <button class="city-card active" data-city="Lisboa">
+          <span>
+            <strong id="savedCity">Lisboa</strong>
+            <small>PT</small>
+        </span>
+          <span id="savedTemp">--°</span>
+        </button>
+
+        <button class="city-card" data-city="Porto">
+          <span>
+            <strong>Porto</strong>
+            <small>PT</small>
+          </span>
+          <span id="portoIcon">--</span>
+        </button>
+
+        <button class="city-card" data-city="Luanda">
+          <span>
+            <strong>Luanda</strong>
+            <small>AO</small>
+          </span>
+          <span id="luandaIcon">--</span>
+        </button>
+      </section>
+    </aside>
+
+    <section class="hero-card">
+      <div class="hero-content">
+        <div>
+          <p class="label cyan">Central Observatory</p>
+          <h2 id="cityName">Lisboa</h2>
+          <p id="weatherDescription" class="description">Coloca a tua API key e pesquisa uma cidade</p>
+          <p id="localTime" class="local-time">--:--</p>
+        </div>
+        <div class="weather-icon" id="weatherIcon">☁️</div>
+      </div>
+
+      <div class="temperature-row">
+        <p id="temperature" class="temperature">--°</p>
+        <div>
+          <p class="muted">Sensação térmica</p>
+          <p id="feelsLike" class="big-value">--°</p>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <article class="metric-card">
+          <p>Humidade</p>
+          <strong id="humidity">--%</strong>
+        </article>
+        <article class="metric-card">
+          <p>Vento</p>
+          <strong id="wind">-- km/h</strong>
+        </article>
+        <article class="metric-card">
+          <p>Pressão</p>
+          <strong id="pressure">-- hPa</strong>
+        </article>
+        <article class="metric-card">
+          <p>Estado</p>
+          <strong id="condition">--</strong>
+        </article>
+      </div>
+    </section>
+
+    <aside class="forecast-panel">
+      <p class="label cyan">Próximos dias</p>
+      <div id="forecastList" class="forecast-list">
+        <div class="forecast-row"><span>Hoje</span><span>--°</span></div>
+        <div class="forecast-row"><span>Amanhã</span><span>--°</span></div>
+        <div class="forecast-row"><span>Depois</span><span>--°</span></div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+
+  <footer class="footer">
+  <p>
+    Desenvolvido por <span>Tommy</span> 
+  </p>
+
+  <small>
+    Meteoros Weather App © 2026
+  </small>
+</footer>
+</body>
+</html>

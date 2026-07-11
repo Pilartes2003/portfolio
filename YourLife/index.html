@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourLife — build your life </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <section id="start-screen">
+    <h1>Sua vida é feita de decisões</h1>
+    <p>Cada escolha muda o seu futuro. Está pronto?</p>
+    <button id="start-btn">Começar</button>
+    </section>
+
+    <section id="game-screen" style="display: none;">
+
+        <div id="status">
+            <p>💼 Carreira: <span id="carreira">50</span></p>
+            <p>💰 Dinheiro: <span id="dinheiro">50</span></p>
+            <p>🧠 Conhecimento: <span id="conhecimento">50</span></p>
+            <p>🙏 Fé: <span id="fe">50</span></p>
+            <p>⚡ Energia: <span id="energia">50</span></p>
+        </div>
+
+        <div id="game-content">
+            <h2 id="question">pergunta</h2>
+            <div id="choices"></div>
+        </div>
+
+        <div id="final-screen" style="display: none;">
+        <h2 id="final-title"></h2>
+        <p id="final-description"></p>
+
+        <div id="final-stats"></div>
+
+        <button id="restart-btn">Jogar novamente</button>
+        </div>
+
+    </section>
+
+    <script src="script.js" defer></script>
+    
+</body>
+</html>
