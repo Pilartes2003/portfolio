@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-pt="Tommy.dev | Criação de Sites para Pequenos Negócios" data-en="Tommy.dev | Website Development for Small Businesses">Tommy.dev | Criação de Sites para Pequenos Negócios</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 
 <body>
@@ -26,6 +28,7 @@
   </nav>
 
   <section class="hero">
+    <canvas id="bg-code"></canvas>
     <div class="hero-content">
       <span class="badge" data-pt="DISPONÍVEL PARA NOVOS PROJETOS" data-en="AVAILABLE FOR NEW PROJECTS">DISPONÍVEL PARA NOVOS PROJETOS</span>
 
@@ -48,18 +51,28 @@
   </section>
 
   <section id="about">
-    <div class="about-grid">
-      <div>
+    <div class="about-me">
+      <model-viewer
+        class="avatar3d"
+        src="avatar.glb"
+        alt="Avatar 3D do Tommy"
+        camera-controls
+        disable-zoom
+        autoplay
+        animation-name="Call_Me_Clean"
+        interaction-prompt="none"
+        environment-image="neutral"
+        shadow-intensity="0.6"
+        exposure="1"></model-viewer>
+      <div class="about-bio">
         <h2 data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
-        <p data-pt="Sou developer web e ajudo pequenos negócios a terem uma presença online à altura do seu trabalho. Crio sites focados em design, rapidez e experiência do utilizador — para que cada visita se transforme numa oportunidade de negócio." data-en="I'm a web developer and I help small businesses build an online presence that matches the quality of their work. I create websites focused on design, speed and user experience — so every visit becomes a business opportunity.">
-          Sou developer web e ajudo pequenos negócios a terem uma
-          presença online à altura do seu trabalho. Crio sites focados
-          em design, rapidez e experiência do utilizador — para que
-          cada visita se transforme numa oportunidade de negócio.
-        </p>
+        <p data-pt="Olá! Chamo-me Tommy, sou de Lisboa e apaixonado por criar coisas na web. Ajudo pequenos negócios a passarem do «só temos Instagram» para um site profissional que passa confiança e atrai clientes." data-en="Hi! I'm Tommy, based in Lisbon and passionate about building for the web. I help small businesses go from having only Instagram to a professional website that builds trust and attracts clients.">Olá! Chamo-me Tommy, sou de Lisboa e apaixonado por criar coisas na web. Ajudo pequenos negócios a passarem do «só temos Instagram» para um site profissional que passa confiança e atrai clientes.</p>
+        <p data-pt="Tirei o curso de Técnico de Informática e Sistemas e, desde aí, nunca parei de aprender: faço cursos e projetos por conta própria, movido pela curiosidade, e tenciono seguir para a universidade. Fora do código, sou apaixonado por futebol." data-en="I trained as an IT &amp; Systems Technician and I've never stopped learning since: I take courses and build projects on my own, driven by curiosity, and I plan to go on to university. Away from code, I'm a big football fan.">Tirei o curso de Técnico de Informática e Sistemas e, desde aí, nunca parei de aprender: faço cursos e projetos por conta própria, movido pela curiosidade, e tenciono seguir para a universidade. Fora do código, sou apaixonado por futebol.</p>
+        <p data-pt="Trabalho de perto com cada cliente, do primeiro rascunho à publicação, com atenção ao pormenor e entregas rápidas. Sem promessas vazias — só um site feito com cuidado." data-en="I work closely with every client, from the first draft to launch, with attention to detail and fast delivery. No empty promises — just a website made with care.">Trabalho de perto com cada cliente, do primeiro rascunho à publicação, com atenção ao pormenor e entregas rápidas. Sem promessas vazias — só um site feito com cuidado.</p>
       </div>
+    </div>
 
-      <div class="skills-grid">
+    <div class="skills-grid">
         <div class="card">
           <h3 data-pt="Sites rápidos e otimizados" data-en="Fast, optimized websites">Sites rápidos e otimizados</h3>
           <p data-pt="Páginas que carregam num instante e aparecem no Google, para os clientes te encontrarem." data-en="Pages that load in an instant and rank on Google, so clients can find you.">Páginas que carregam num instante e aparecem no Google, para os clientes te encontrarem.</p>
@@ -80,6 +93,27 @@
           <p data-pt="Mapas, marcações, pagamentos e outras integrações prontas a usar no teu site." data-en="Maps, bookings, payments and other integrations ready to use on your site.">Mapas, marcações, pagamentos e outras integrações prontas a usar no teu site.</p>
         </div>
       </div>
+  </section>
+
+  <!-- Competências -->
+  <section id="competencias">
+    <div class="section-title">
+      <h2 data-pt="Competências" data-en="Skills">Competências</h2>
+      <p data-pt="As ferramentas e tecnologias com que trabalho." data-en="The tools and technologies I work with.">As ferramentas e tecnologias com que trabalho.</p>
+    </div>
+
+    <div class="skills-grid-icons">
+      <div class="skill-tile"><i class="devicon-html5-plain colored"></i><span class="name">HTML5</span></div>
+      <div class="skill-tile"><i class="devicon-css3-plain colored"></i><span class="name">CSS3</span></div>
+      <div class="skill-tile"><i class="devicon-javascript-plain colored"></i><span class="name">JavaScript</span></div>
+      <div class="skill-tile"><i class="devicon-bootstrap-plain colored"></i><span class="name">Bootstrap</span></div>
+      <div class="skill-tile"><i class="devicon-php-plain colored"></i><span class="name">PHP</span></div>
+      <div class="skill-tile"><i class="devicon-supabase-plain colored"></i><span class="name">Supabase</span></div>
+      <div class="skill-tile"><span class="emoji-icon">🔌</span><span class="name">APIs</span></div>
+      <div class="skill-tile"><i class="devicon-git-plain colored"></i><span class="name">Git</span></div>
+      <div class="skill-tile"><i class="devicon-github-original"></i><span class="name">GitHub</span></div>
+      <div class="skill-tile"><i class="devicon-netlify-plain colored"></i><span class="name">Netlify</span></div>
+      <div class="skill-tile"><span class="emoji-icon">📱</span><span class="name" data-pt="Design Responsivo" data-en="Responsive Design">Design Responsivo</span></div>
     </div>
   </section>
 
@@ -206,6 +240,128 @@
   </div>
 </section>
 
+  <!-- Processo -->
+  <section id="processo">
+    <div class="section-title">
+      <h2 data-pt="Como Trabalho" data-en="How I Work">Como Trabalho</h2>
+      <p data-pt="Do primeiro «olá» ao site no ar, em quatro passos simples." data-en="From the first hello to a live website, in four simple steps.">Do primeiro «olá» ao site no ar, em quatro passos simples.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <div class="step-icon">💬</div>
+        <h3 data-pt="Conversamos" data-en="We talk">Conversamos</h3>
+        <p data-pt="Falamos sobre o teu negócio, os teus objetivos e o que precisas. Sem compromisso." data-en="We talk about your business, your goals and what you need. No commitment.">Falamos sobre o teu negócio, os teus objetivos e o que precisas. Sem compromisso.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <div class="step-icon">🎨</div>
+        <h3 data-pt="Desenho e proponho" data-en="I design & propose">Desenho e proponho</h3>
+        <p data-pt="Preparo uma proposta e um design à tua medida, e mostro-te tudo antes de avançar." data-en="I prepare a proposal and a design tailored to you, and show you everything before moving on.">Preparo uma proposta e um design à tua medida, e mostro-te tudo antes de avançar.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <div class="step-icon">⚙️</div>
+        <h3 data-pt="Desenvolvo" data-en="I build">Desenvolvo</h3>
+        <p data-pt="Construo o site, rápido e adaptado ao telemóvel, mantendo-te sempre a par." data-en="I build the site, fast and mobile-friendly, keeping you in the loop throughout.">Construo o site, rápido e adaptado ao telemóvel, mantendo-te sempre a par.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">4</span>
+        <div class="step-icon">🚀</div>
+        <h3 data-pt="Entrego e apoio" data-en="I launch & support">Entrego e apoio</h3>
+        <p data-pt="Publico o site e continuo por perto para atualizações, melhorias e suporte." data-en="I launch the site and stay around for updates, improvements and support.">Publico o site e continuo por perto para atualizações, melhorias e suporte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garantias -->
+  <section id="garantias">
+    <div class="section-title">
+      <h2 data-pt="O Que Podes Esperar" data-en="What You Can Expect">O Que Podes Esperar</h2>
+      <p data-pt="Comigo, sabes exatamente ao que vais — do primeiro contacto ao site no ar." data-en="With me, you know exactly what you're getting — from first contact to launch.">Comigo, sabes exatamente ao que vais — do primeiro contacto ao site no ar.</p>
+    </div>
+
+    <div class="guarantees-grid">
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🤝</div>
+        <h3 data-pt="Orçamento grátis" data-en="Free quote">Orçamento grátis</h3>
+        <p data-pt="Falamos e digo-te quanto custa, sem compromisso. Só avanças se quiseres." data-en="We talk and I tell you the cost, no strings attached. You only move forward if you want to.">Falamos e digo-te quanto custa, sem compromisso. Só avanças se quiseres.</p>
+      </div>
+
+      <div class="guarantee-card">
+        <div class="guarantee-icon">⚡</div>
+        <h3 data-pt="Entrega rápida" data-en="Fast delivery">Entrega rápida</h3>
+        <p data-pt="Combinamos um prazo e eu cumpro-o. Sei que o teu tempo conta." data-en="We agree on a deadline and I meet it. I know your time matters.">Combinamos um prazo e eu cumpro-o. Sei que o teu tempo conta.</p>
+      </div>
+
+      <div class="guarantee-card">
+        <div class="guarantee-icon">✨</div>
+        <h3 data-pt="Alterações até gostares" data-en="Revisions until you're happy">Alterações até gostares</h3>
+        <p data-pt="Afinamos o site até ficar mesmo como o imaginaste." data-en="We fine-tune the site until it's exactly how you pictured it.">Afinamos o site até ficar mesmo como o imaginaste.</p>
+      </div>
+
+      <div class="guarantee-card">
+        <div class="guarantee-icon">💬</div>
+        <h3 data-pt="Falas comigo, sempre" data-en="You talk to me, always">Falas comigo, sempre</h3>
+        <p data-pt="Do início ao fim, tratas diretamente comigo. Sem intermediários." data-en="From start to finish, you deal directly with me. No middlemen.">Do início ao fim, tratas diretamente comigo. Sem intermediários.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preços -->
+  <section id="precos">
+    <div class="section-title">
+      <h2 data-pt="Preços" data-en="Pricing">Preços</h2>
+      <p data-pt="Valores de partida, transparentes. Cada projeto leva depois um orçamento à medida." data-en="Transparent starting prices. Every project then gets a tailored quote.">Valores de partida, transparentes. Cada projeto leva depois um orçamento à medida.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Landing Page</h3>
+        <div class="price"><span class="from" data-pt="a partir de" data-en="from">a partir de</span>100€</div>
+        <p data-pt="Uma página única e focada — ideal para começar ou para uma campanha." data-en="A single, focused page — ideal to get started or for a campaign.">Uma página única e focada — ideal para começar ou para uma campanha.</p>
+        <ul class="price-feats">
+          <li data-pt="1 página" data-en="1 page">1 página</li>
+          <li data-pt="Design responsivo" data-en="Responsive design">Design responsivo</li>
+          <li data-pt="Formulário de contacto" data-en="Contact form">Formulário de contacto</li>
+        </ul>
+        <a href="#contact" class="btn" data-pt="Pedir orçamento" data-en="Get a quote">Pedir orçamento</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="badge-pop" data-pt="Mais popular" data-en="Most popular">Mais popular</span>
+        <h3>Site Profissional</h3>
+        <div class="price"><span class="from" data-pt="a partir de" data-en="from">a partir de</span>350€</div>
+        <p data-pt="Várias secções para apresentares o teu negócio por completo." data-en="Multiple sections to present your business in full.">Várias secções para apresentares o teu negócio por completo.</p>
+        <ul class="price-feats">
+          <li data-pt="Até 5 secções" data-en="Up to 5 sections">Até 5 secções</li>
+          <li data-pt="Design à medida" data-en="Custom design">Design à medida</li>
+          <li data-pt="Otimizado para o Google" data-en="Google-optimized">Otimizado para o Google</li>
+          <li data-pt="Adaptado ao telemóvel" data-en="Mobile-friendly">Adaptado ao telemóvel</li>
+        </ul>
+        <a href="#contact" class="btn" data-pt="Pedir orçamento" data-en="Get a quote">Pedir orçamento</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Site + Funcionalidades</h3>
+        <div class="price"><span class="from" data-pt="a partir de" data-en="from">a partir de</span>600€</div>
+        <p data-pt="Com marcações, loja simples ou integrações feitas à medida." data-en="With bookings, a simple shop or custom-made integrations.">Com marcações, loja simples ou integrações feitas à medida.</p>
+        <ul class="price-feats">
+          <li data-pt="Tudo do plano anterior" data-en="Everything in the previous plan">Tudo do plano anterior</li>
+          <li data-pt="Marcações ou loja simples" data-en="Bookings or a simple shop">Marcações ou loja simples</li>
+          <li data-pt="Integrações à medida" data-en="Custom integrations">Integrações à medida</li>
+        </ul>
+        <a href="#contact" class="btn" data-pt="Pedir orçamento" data-en="Get a quote">Pedir orçamento</a>
+      </div>
+    </div>
+
+    <p class="price-note" data-pt="Precisas de manutenção? A partir de 20€/mês. Os valores são pontos de partida — falamos e faço-te um orçamento à tua medida." data-en="Need maintenance? From €20/month. These are starting prices — we talk and I give you a tailored quote.">Precisas de manutenção? A partir de 20€/mês. Os valores são pontos de partida — falamos e faço-te um orçamento à tua medida.</p>
+  </section>
+
   <section id="contact" class="contact">
   <div class="contact-box card">
     <h2 data-pt="Vamos Começar o Teu Projeto" data-en="Let's Start Your Project">Vamos Começar o Teu Projeto</h2>
@@ -265,6 +421,63 @@
         setLang(document.documentElement.lang === 'pt' ? 'en' : 'pt');
       });
     })();
+  </script>
+
+  <script>
+    // revela elementos ao fazer scroll
+    const aRevelar = document.querySelectorAll(".step-card, .guarantee-card");
+
+    const observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("show");
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    aRevelar.forEach(function (el) {
+      observador.observe(el);
+    });
+  </script>
+
+  <script>
+    // chuva de código no fundo
+    const canvas = document.getElementById("bg-code");
+    const ctx = canvas.getContext("2d");
+
+    const simbolos = "01</>{}[]();=+-*consletfunction".split("");
+    const tamanho = 16;
+    let gotas;
+
+    function ajustar() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      const colunas = Math.floor(canvas.width / tamanho);
+      gotas = new Array(colunas).fill(1);
+    }
+    ajustar();
+    window.addEventListener("resize", ajustar);
+
+    function desenhar() {
+      // véu escuro por cima para deixar rasto
+      ctx.fillStyle = "rgba(9, 20, 33, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ffff";
+      ctx.font = tamanho + "px monospace";
+
+      for (let i = 0; i < gotas.length; i++) {
+        const c = simbolos[Math.floor(Math.random() * simbolos.length)];
+        ctx.fillText(c, i * tamanho, gotas[i] * tamanho);
+
+        if (gotas[i] * tamanho > canvas.height && Math.random() > 0.975) {
+          gotas[i] = 0;
+        }
+        gotas[i]++;
+      }
+    }
+    setInterval(desenhar, 55);
   </script>
 
 </body>

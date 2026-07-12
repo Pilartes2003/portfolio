@@ -10,6 +10,17 @@
       color: #d9e3f6;
     }
 
+    /* chuva de código no hero */
+    #bg-code {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
     a {
       text-decoration: none;
       color: inherit;
@@ -96,6 +107,8 @@
     }
 
     .hero {
+      position: relative;
+      overflow: hidden;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -107,6 +120,8 @@
     }
 
     .hero-content {
+      position: relative;
+      z-index: 1;
       max-width: 850px;
     }
 
@@ -344,6 +359,177 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
+    /* Competências */
+    .skills-grid-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 16px;
+    }
+    .skill-tile {
+      background: rgba(43, 53, 68, 0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 26px 12px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: 0.25s;
+    }
+    .skill-tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,255,255,0.25);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+    }
+    .skill-tile i,
+    .skill-tile .emoji-icon {
+      font-size: 46px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .skill-tile i { color: #fff; }
+    .skill-tile .name {
+      color: #d9e3f6;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Processo */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      position: relative;
+      background: rgba(43, 53, 68, 0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 30px 24px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .step-card.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .step-card:nth-child(1){ transition-delay: 0s; }
+    .step-card:nth-child(2){ transition-delay: 0.12s; }
+    .step-card:nth-child(3){ transition-delay: 0.24s; }
+    .step-card:nth-child(4){ transition-delay: 0.36s; }
+
+    .step-num {
+      position: absolute;
+      top: 16px;
+      right: 22px;
+      font-size: 36px;
+      font-weight: bold;
+      color: rgba(0,255,255,0.22);
+    }
+    .step-icon { font-size: 34px; margin-bottom: 14px; }
+    .step-card h3 { color: #fff; margin-bottom: 10px; }
+    .step-card p { color: #b9cac9; font-size: 14px; line-height: 1.6; }
+
+    /* Garantias */
+    .guarantees-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .guarantee-card {
+      background: rgba(43, 53, 68, 0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 30px 24px;
+      backdrop-filter: blur(12px);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.4s ease, border-color 0.3s ease;
+    }
+    .guarantee-card.show { opacity: 1; transform: none; }
+    .guarantee-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,255,255,0.25);
+    }
+    .guarantee-icon { font-size: 36px; margin-bottom: 14px; }
+    .guarantee-card h3 { color: #fff; margin-bottom: 8px; font-size: 18px; }
+    .guarantee-card p { color: #b9cac9; font-size: 14px; line-height: 1.6; }
+
+    /* Preços */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .price-card {
+      position: relative;
+      background: rgba(43, 53, 68, 0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 34px 28px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,255,255,0.25);
+    }
+    .price-card.featured {
+      border-color: rgba(0,255,255,0.4);
+      box-shadow: 0 0 30px rgba(0,255,255,0.12);
+    }
+    .badge-pop {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #00ffff, #7f00ff);
+      color: #001;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .price-card h3 { color: #fff; margin-bottom: 10px; }
+    .price {
+      font-size: 34px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .price .from {
+      display: block;
+      font-size: 13px;
+      font-weight: normal;
+      color: #b9cac9;
+    }
+    .price-card > p {
+      color: #b9cac9;
+      font-size: 14px;
+      margin-bottom: 18px;
+      min-height: 42px;
+    }
+    .price-feats { list-style: none; margin-bottom: 22px; }
+    .price-feats li {
+      color: #d9e3f6;
+      font-size: 14px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .price-card .btn { width: 100%; text-align: center; }
+    .price-note {
+      text-align: center;
+      color: #b9cac9;
+      font-size: 14px;
+      margin-top: 28px;
+    }
+
     .contact {
       text-align: center;
       background:
@@ -381,7 +567,11 @@
 
       .about-grid,
       .projects-grid,
-      .services-grid {
+      .services-grid,
+      .process-grid,
+      .guarantees-grid,
+      .pricing-grid,
+      .skills-cats {
         grid-template-columns: 1fr;
       }
 
@@ -403,4 +593,47 @@
      .card:hover {
         transform: translateY(-5px);
         border-color: rgba(0,255,255,0.2);
+    }
+
+    /* Sobre mim (pessoal) */
+    .about-me {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 45px;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(135deg, rgba(0,255,255,0.12), rgba(127,0,255,0.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #b9cac9;
+      font-size: 14px;
+      padding: 16px;
+    }
+
+    .about-bio h2 { margin-bottom: 18px; }
+    .about-bio p { color: #b9cac9; line-height: 1.7; margin-bottom: 14px; }
+
+    .avatar3d {
+      width: 100%;
+      height: 400px;
+      background-color: transparent;
+      --poster-color: transparent;
+      cursor: grab;
+    }
+    .avatar3d:active { cursor: grabbing; }
+
+    @media (max-width: 900px) {
+      .about-me { grid-template-columns: 1fr; text-align: center; }
+      .about-photo { max-width: 260px; margin: 0 auto; aspect-ratio: 1 / 1; }
+      .avatar3d { height: 340px; }
     }
