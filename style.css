@@ -640,7 +640,22 @@
       border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       color: #b9cac9;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+    }
+    .socials a {
+      color: #b9cac9;
+      font-size: 20px;
+      transition: 0.25s;
+    }
+    .socials a:hover {
+      color: #00ffff;
+      transform: translateY(-2px);
     }
 
     @media (max-width: 900px) {
