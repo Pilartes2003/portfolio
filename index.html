@@ -4,10 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-pt="Tommy.dev | Criação de Sites para Pequenos Negócios" data-en="Tommy.dev | Website Development for Small Businesses">Tommy.dev | Criação de Sites para Pequenos Negócios</title>
+
+  <!-- Meta description: o texto que aparece por baixo do título nos resultados do Google.
+       Sem isto, o Google escolhe um trecho aleatório da página — pior para cliques. -->
+  <meta name="description" data-pt="Crio sites modernos, rápidos e adaptados ao telemóvel para pequenos negócios em Portugal. Orçamento grátis e sem compromisso." data-en="I build modern, fast and mobile-friendly websites for small businesses in Portugal. Free, no-commitment quote." content="Crio sites modernos, rápidos e adaptados ao telemóvel para pequenos negócios em Portugal. Orçamento grátis e sem compromisso." />
+
+  <!-- Canonical: diz ao Google qual é o URL "oficial" desta página, evita problemas de conteúdo duplicado -->
+  <link rel="canonical" href="https://tommywebdesign.netlify.app/" />
+
+  <!-- Idiomas alternativos: ajuda o Google a perceber que a página existe em PT e EN -->
+  <link rel="alternate" hreflang="pt" href="https://tommywebdesign.netlify.app/" />
+  <link rel="alternate" hreflang="en" href="https://tommywebdesign.netlify.app/" />
+
+  <!-- Favicon: o ícone que aparece no separador do browser -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+
+  <!-- Open Graph: controla como o link aparece quando é partilhado no WhatsApp, Instagram, LinkedIn, Facebook... -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tommy.dev" />
+  <meta property="og:title" content="Tommy.dev | Criação de Sites para Pequenos Negócios" />
+  <meta property="og:description" content="Crio sites modernos, rápidos e adaptados ao telemóvel para pequenos negócios em Portugal. Orçamento grátis e sem compromisso." />
+  <meta property="og:image" content="https://tommywebdesign.netlify.app/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://tommywebdesign.netlify.app/" />
+  <meta property="og:locale" content="pt_PT" />
+
+  <!-- Twitter/X Card: mesmo objetivo do Open Graph, mas para o X (Twitter) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tommy.dev | Criação de Sites para Pequenos Negócios" />
+  <meta name="twitter:description" content="Crio sites modernos, rápidos e adaptados ao telemóvel para pequenos negócios em Portugal." />
+  <meta name="twitter:image" content="https://tommywebdesign.netlify.app/img/og-image.jpg" />
+
   <link rel="stylesheet" href="style.css">
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Dados estruturados (JSON-LD): não aparece no ecrã, mas diz ao Google, de forma
+       que ele consegue "ler" diretamente, quem és, o que fazes e onde te encontrar.
+       Pode ajudar a apareceres com mais destaque nos resultados de pesquisa. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Tommy.dev",
+    "url": "https://tommywebdesign.netlify.app/",
+    "image": "https://tommywebdesign.netlify.app/img/og-image.jpg",
+    "description": "Criação de sites modernos, rápidos e adaptados ao telemóvel para pequenos negócios em Portugal.",
+    "areaServed": "PT",
+    "founder": {
+      "@type": "Person",
+      "name": "Tommy"
+    },
+    "sameAs": [
+      "https://www.instagram.com/tommy.frontend/",
+      "https://www.linkedin.com/in/jo%C3%A3o-silva-5ab490269/",
+      "https://github.com/Pilartes2003"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -137,7 +193,7 @@
         <div class="proj-body">
           <span class="proj-cat cliente" data-pt="Cliente" data-en="Client">Cliente</span>
           <h3>Atelier dos Gelados</h3>
-          <p data-pt="Marca de geladinhos gourmet: montra de sabores, filtros e encomendas por WhatsApp." data-en="Gourmet ice-cream brand: flavor showcase, filters and WhatsApp ordering.">Marca de geladinhos gourmet: montra de sabores, filtros e encomendas por WhatsApp.</p>
+          <p data-pt="Site para uma marca de geladinhos gourmet — pensado para reduzir a dependência do Instagram e transformar visitas em encomendas diretas por WhatsApp." data-en="Website for a gourmet ice-cream brand — built to reduce dependence on Instagram and turn visits into direct WhatsApp orders.">Site para uma marca de geladinhos gourmet — pensado para reduzir a dependência do Instagram e transformar visitas em encomendas diretas por WhatsApp.</p>
           <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           <div class="proj-links">
             <a href="gelados/index.html" target="_blank" data-pt="Ver Demo" data-en="Live Demo">Ver Demo</a>
@@ -150,7 +206,7 @@
         <div class="proj-body">
           <span class="proj-cat cliente" data-pt="Cliente" data-en="Client">Cliente</span>
           <h3>Navalha &amp; Cia.</h3>
-          <p data-pt="Barbearia com sistema de marcações online: barbeiro, serviço, dia e hora em minutos." data-en="Barbershop with online booking: barber, service, day and time in minutes.">Barbearia com sistema de marcações online: barbeiro, serviço, dia e hora em minutos.</p>
+          <p data-pt="Site para barbearia com marcações online — para reduzir chamadas e faltas, deixando o cliente marcar em menos de um minuto." data-en="Barbershop website with online booking — built to cut down on phone calls and no-shows, letting clients book in under a minute.">Site para barbearia com marcações online — para reduzir chamadas e faltas, deixando o cliente marcar em menos de um minuto.</p>
           <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           <div class="proj-links">
             <a href="barbearia/index.html" target="_blank" data-pt="Ver Demo" data-en="Live Demo">Ver Demo</a>
@@ -416,6 +472,14 @@
         document.querySelectorAll('[data-href-' + lang + ']').forEach(function (el) {
           el.setAttribute('href', el.getAttribute('data-href-' + lang));
         });
+
+        // meta description não tem texto visível (usa o atributo "content"), por isso
+        // precisa de ser atualizada à parte em vez de pelo loop de textContent acima
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          var d = metaDesc.getAttribute('data-' + lang);
+          if (d !== null) metaDesc.setAttribute('content', d);
+        }
 
         toggle.textContent = (lang === 'pt') ? 'EN' : 'PT';
 
