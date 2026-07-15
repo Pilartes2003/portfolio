@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tommywebdesign.netlify.app/sitemap.xml
+Sitemap: https://tommywebdesign.com/sitemap.xml
