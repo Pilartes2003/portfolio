@@ -37,6 +37,7 @@
   <meta name="twitter:image" content="https://tommywebdesign.com/img/og-image.jpg" />
 
   <link rel="stylesheet" href="style.css">
+
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -69,7 +70,7 @@
 <body>
 
   <nav>
-    <div class="logo">Tommy.dev</div>
+    <div class="logo"><span class="prompt-user">tommy</span><span class="prompt-sep">@</span><span class="prompt-path">dev</span><span class="prompt-sep">:~$</span></div>
 
     <ul class="nav-links">
       <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
@@ -88,6 +89,19 @@
     <canvas id="bg-code"></canvas>
     <div class="hero-content">
       <span class="badge" data-pt="DISPONÍVEL PARA NOVOS PROJETOS" data-en="AVAILABLE FOR NEW PROJECTS">DISPONÍVEL PARA NOVOS PROJETOS</span>
+
+      <div class="terminal-window">
+        <div class="terminal-titlebar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="term-title">tommy@dev — zsh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="prompt-line"><span class="p-user">tommy</span>@<span class="p-path">dev</span>:~$ whoami</div>
+          <div class="term-out"><span id="whoamiOut" data-pt="Web developer que ajuda pequenos negócios a vender mais online." data-en="Web developer helping small businesses sell more online.">Web developer que ajuda pequenos negócios a vender mais online.</span><span class="cursor"></span></div>
+        </div>
+      </div>
 
       <h1 data-pt="Sites profissionais para pequenos negócios que querem atrair mais clientes" data-en="Professional websites for small businesses that want to attract more clients">
         Sites profissionais para pequenos negócios
@@ -122,6 +136,7 @@
         shadow-intensity="0.6"
         exposure="1"></model-viewer>
       <div class="about-bio">
+        <span class="eyebrow" data-pt="about.me" data-en="about.me">about.me</span>
         <h2 data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
         <p data-pt="Olá! Chamo-me Tommy, sou de Lisboa e apaixonado por criar coisas na web. Ajudo pequenos negócios a passarem do «só temos Instagram» para um site profissional que passa confiança e atrai clientes." data-en="Hi! I'm Tommy, based in Lisbon and passionate about building for the web. I help small businesses go from having only Instagram to a professional website that builds trust and attracts clients.">Olá! Chamo-me Tommy, sou de Lisboa e apaixonado por criar coisas na web. Ajudo pequenos negócios a passarem do «só temos Instagram» para um site profissional que passa confiança e atrai clientes.</p>
         <p data-pt="Tirei o curso de Técnico de Informática e Sistemas e, desde aí, nunca parei de aprender: faço cursos e projetos por conta própria, movido pela curiosidade, e tenciono seguir para a universidade. Fora do código, sou apaixonado por futebol." data-en="I trained as an IT &amp; Systems Technician and I've never stopped learning since: I take courses and build projects on my own, driven by curiosity, and I plan to go on to university. Away from code, I'm a big football fan.">Tirei o curso de Técnico de Informática e Sistemas e, desde aí, nunca parei de aprender: faço cursos e projetos por conta própria, movido pela curiosidade, e tenciono seguir para a universidade. Fora do código, sou apaixonado por futebol.</p>
@@ -155,27 +170,75 @@
   <!-- Competências -->
   <section id="competencias">
     <div class="section-title">
+      <span class="eyebrow" data-pt="tech-stack" data-en="tech-stack">tech-stack</span>
       <h2 data-pt="Competências" data-en="Skills">Competências</h2>
       <p data-pt="As ferramentas e tecnologias com que trabalho." data-en="The tools and technologies I work with.">As ferramentas e tecnologias com que trabalho.</p>
     </div>
 
-    <div class="skills-grid-icons">
-      <div class="skill-tile"><i class="devicon-html5-plain colored"></i><span class="name">HTML5</span></div>
-      <div class="skill-tile"><i class="devicon-css3-plain colored"></i><span class="name">CSS3</span></div>
-      <div class="skill-tile"><i class="devicon-javascript-plain colored"></i><span class="name">JavaScript</span></div>
-      <div class="skill-tile"><i class="devicon-bootstrap-plain colored"></i><span class="name">Bootstrap</span></div>
-      <div class="skill-tile"><i class="devicon-php-plain colored"></i><span class="name">PHP</span></div>
-      <div class="skill-tile"><i class="devicon-supabase-plain colored"></i><span class="name">Supabase</span></div>
-      <div class="skill-tile"><span class="emoji-icon">🔌</span><span class="name">APIs</span></div>
-      <div class="skill-tile"><i class="devicon-git-plain colored"></i><span class="name">Git</span></div>
-      <div class="skill-tile"><i class="devicon-github-original"></i><span class="name">GitHub</span></div>
-      <div class="skill-tile"><i class="devicon-netlify-plain colored"></i><span class="name">Netlify</span></div>
-      <div class="skill-tile"><span class="emoji-icon">📱</span><span class="name" data-pt="Design Responsivo" data-en="Responsive Design">Design Responsivo</span></div>
+    <!--
+      Cartões de competências: cada <article class="skill-card"> é uma categoria.
+      Para adicionar/remover uma tecnologia, basta editar a lista <ul class="skill-tech-list">
+      dentro do cartão certo — cada tecnologia é um <li> independente com o ícone (devicon)
+      e o nome. Para adicionar uma categoria nova, duplica um <article class="skill-card"> inteiro
+      e muda o número, ícone, título, descrição e lista de tecnologias.
+    -->
+    <div class="skills-cards-grid">
+
+      <article class="skill-card" tabindex="0" aria-label="Frontend: HTML5, CSS3, JavaScript, React">
+        <div class="skill-card-tilt">
+          <div class="skill-card-top">
+            <span class="skill-num">01</span>
+            <div class="skill-visual"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+          </div>
+          <h3 data-pt="Frontend" data-en="Frontend">Frontend</h3>
+          <p data-pt="Interfaces modernas, rápidas e agradáveis de usar — da estrutura à interação." data-en="Modern, fast interfaces that feel great to use — from structure to interaction.">Interfaces modernas, rápidas e agradáveis de usar — da estrutura à interação.</p>
+          <ul class="skill-tech-list">
+            <li class="tech-chip"><i class="devicon-html5-plain colored" aria-hidden="true"></i><span>HTML5</span></li>
+            <li class="tech-chip"><i class="devicon-css3-plain colored" aria-hidden="true"></i><span>CSS3</span></li>
+            <li class="tech-chip"><i class="devicon-javascript-plain colored" aria-hidden="true"></i><span>JavaScript</span></li>
+            <li class="tech-chip"><i class="devicon-react-original colored" aria-hidden="true"></i><span>React</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="skill-card" tabindex="0" aria-label="Backend: PHP, MySQL, Node.js">
+        <div class="skill-card-tilt">
+          <div class="skill-card-top">
+            <span class="skill-num">02</span>
+            <div class="skill-visual"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+          </div>
+          <h3 data-pt="Backend" data-en="Backend">Backend</h3>
+          <p data-pt="Lógica, dados e integrações que fazem o site funcionar por trás do ecrã." data-en="Logic, data and integrations that make the site work behind the screen.">Lógica, dados e integrações que fazem o site funcionar por trás do ecrã.</p>
+          <ul class="skill-tech-list">
+            <li class="tech-chip"><i class="devicon-php-plain colored" aria-hidden="true"></i><span>PHP</span></li>
+            <li class="tech-chip"><i class="devicon-mysql-plain colored" aria-hidden="true"></i><span>MySQL</span></li>
+            <li class="tech-chip"><i class="devicon-nodejs-plain colored" aria-hidden="true"></i><span>Node.js</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="skill-card" tabindex="0" aria-label="Ferramentas: Git, GitHub, Figma, VS Code">
+        <div class="skill-card-tilt">
+          <div class="skill-card-top">
+            <span class="skill-num">03</span>
+            <div class="skill-visual"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></div>
+          </div>
+          <h3 data-pt="Ferramentas" data-en="Tools">Ferramentas</h3>
+          <p data-pt="O fluxo de trabalho que mantém tudo organizado, versionado e a andar." data-en="The workflow that keeps everything organized, versioned and moving.">O fluxo de trabalho que mantém tudo organizado, versionado e a andar.</p>
+          <ul class="skill-tech-list">
+            <li class="tech-chip"><i class="devicon-git-plain colored" aria-hidden="true"></i><span>Git</span></li>
+            <li class="tech-chip"><i class="devicon-github-original" aria-hidden="true"></i><span>GitHub</span></li>
+            <li class="tech-chip"><i class="devicon-vscode-plain colored" aria-hidden="true"></i><span>VS Code</span></li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </section>
 
   <section id="projects">
     <div class="section-title">
+      <span class="eyebrow" data-pt="projects" data-en="projects">projects</span>
       <h2 data-pt="Projetos em Destaque" data-en="Featured Projects">Projetos em Destaque</h2>
       <p data-pt="Alguns trabalhos que mostram design, funcionalidade e experiência interativa." data-en="A few works showcasing design, functionality and interactive experience.">Alguns trabalhos que mostram design, funcionalidade e experiência interativa.</p>
     </div>
@@ -189,6 +252,7 @@
     <div class="proj-grid">
 
       <div class="proj-card" data-cat="cliente">
+        <div class="proj-filetab"><span class="dot"></span>gelados.html</div>
         <div class="proj-thumb"><img src="img/gelados.svg" alt="Atelier dos Gelados"></div>
         <div class="proj-body">
           <span class="proj-cat cliente" data-pt="Cliente" data-en="Client">Cliente</span>
@@ -202,6 +266,7 @@
       </div>
 
       <div class="proj-card" data-cat="cliente">
+        <div class="proj-filetab"><span class="dot"></span>navalha.html</div>
         <div class="proj-thumb"><img src="img/barbearia.svg" alt="Navalha & Cia."></div>
         <div class="proj-body">
           <span class="proj-cat cliente" data-pt="Cliente" data-en="Client">Cliente</span>
@@ -215,6 +280,7 @@
       </div>
 
       <div class="proj-card" data-cat="estudo">
+        <div class="proj-filetab"><span class="dot"></span>lifeos.js</div>
         <div class="proj-thumb"><img src="img/LifeOS-app.png" alt="LifeOS"></div>
         <div class="proj-body">
           <span class="proj-cat estudo" data-pt="Estudo" data-en="Learning">Estudo</span>
@@ -229,6 +295,7 @@
       </div>
 
       <div class="proj-card" data-cat="estudo">
+        <div class="proj-filetab"><span class="dot"></span>weather.js</div>
         <div class="proj-thumb"><img src="img/Meteoros_app.png" alt="Weather App"></div>
         <div class="proj-body">
           <span class="proj-cat estudo" data-pt="Estudo" data-en="Learning">Estudo</span>
@@ -243,6 +310,7 @@
       </div>
 
       <div class="proj-card" data-cat="estudo">
+        <div class="proj-filetab"><span class="dot"></span>cars.css</div>
         <div class="proj-thumb"><img src="img/Cars-Showcase.png" alt="Luxury Cars Showcase"></div>
         <div class="proj-body">
           <span class="proj-cat estudo" data-pt="Estudo" data-en="Learning">Estudo</span>
@@ -261,6 +329,7 @@
 
   <section id="services">
   <div class="section-title">
+    <span class="eyebrow" data-pt="services" data-en="services">services</span>
     <h2 data-pt="Serviços" data-en="Services">Serviços</h2>
     <p data-pt="Soluções para marcas, negócios e projetos digitais." data-en="Solutions for brands, businesses and digital projects.">Soluções para marcas, negócios e projetos digitais.</p>
   </div>
@@ -301,6 +370,7 @@
   <!-- Processo -->
   <section id="processo">
     <div class="section-title">
+      <span class="eyebrow" data-pt="workflow" data-en="workflow">workflow</span>
       <h2 data-pt="Como Trabalho" data-en="How I Work">Como Trabalho</h2>
       <p data-pt="Do primeiro «olá» ao site no ar, em quatro passos simples." data-en="From the first hello to a live website, in four simple steps.">Do primeiro «olá» ao site no ar, em quatro passos simples.</p>
     </div>
@@ -339,6 +409,7 @@
   <!-- Garantias -->
   <section id="garantias">
     <div class="section-title">
+      <span class="eyebrow" data-pt="guarantees" data-en="guarantees">guarantees</span>
       <h2 data-pt="O Que Podes Esperar" data-en="What You Can Expect">O Que Podes Esperar</h2>
       <p data-pt="Comigo, sabes exatamente ao que vais — do primeiro contacto ao site no ar." data-en="With me, you know exactly what you're getting — from first contact to launch.">Comigo, sabes exatamente ao que vais — do primeiro contacto ao site no ar.</p>
     </div>
@@ -373,6 +444,7 @@
   <!-- Preços -->
   <section id="precos">
     <div class="section-title">
+      <span class="eyebrow" data-pt="pricing" data-en="pricing">pricing</span>
       <h2 data-pt="Preços" data-en="Pricing">Preços</h2>
       <p data-pt="Valores de partida, transparentes. Cada projeto leva depois um orçamento à medida." data-en="Transparent starting prices. Every project then gets a tailored quote.">Valores de partida, transparentes. Cada projeto leva depois um orçamento à medida.</p>
     </div>
@@ -422,6 +494,7 @@
 
   <section id="contact" class="contact">
   <div class="contact-box card">
+    <span class="eyebrow" data-pt="contact" data-en="contact">contact</span>
     <h2 data-pt="Vamos Começar o Teu Projeto" data-en="Let's Start Your Project">Vamos Começar o Teu Projeto</h2>
 
     <p data-pt="Conta-me a tua ideia. Faço-te um orçamento grátis e sem compromisso." data-en="Tell me your idea. I'll give you a free, no-commitment quote.">
@@ -498,7 +571,7 @@
 
   <script>
     // revela elementos ao fazer scroll
-    const aRevelar = document.querySelectorAll(".step-card, .guarantee-card");
+    const aRevelar = document.querySelectorAll(".step-card, .guarantee-card, .skill-card");
 
     const observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
@@ -570,6 +643,79 @@
         });
       });
     });
+  </script>
+
+  <script>
+    // efeito de "escrita" no terminal do hero
+    (function () {
+      var out = document.getElementById('whoamiOut');
+      var toggle = document.getElementById('langToggle');
+      if (!out) return;
+
+      var typing = false;
+
+      function typeIt() {
+        if (typing) return;
+        typing = true;
+        var text = out.textContent;
+        out.textContent = '';
+        var i = 0;
+        var iv = setInterval(function () {
+          out.textContent += text.charAt(i);
+          i++;
+          if (i >= text.length) {
+            clearInterval(iv);
+            typing = false;
+          }
+        }, 28);
+      }
+
+      // espera o script de idioma definir o texto inicial antes de "escrever"
+      window.addEventListener('load', function () {
+        setTimeout(typeIt, 400);
+      });
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          setTimeout(typeIt, 60);
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    // tilt 3D subtil nos cartões de competências (só em dispositivos com rato,
+    // e nunca se o utilizador pedir menos movimento)
+    (function () {
+      var podeInclinar =
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+        !(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+      if (!podeInclinar) return;
+
+      var MAX_TILT = 7; // graus — mantém o efeito discreto, não exagerado
+
+      document.querySelectorAll('.skill-card').forEach(function (card) {
+        var inner = card.querySelector('.skill-card-tilt');
+        if (!inner) return;
+
+        card.addEventListener('mousemove', function (e) {
+          var rect = card.getBoundingClientRect();
+          var px = (e.clientX - rect.left) / rect.width;  // 0 a 1
+          var py = (e.clientY - rect.top) / rect.height;  // 0 a 1
+
+          var rotY = (px - 0.5) * (MAX_TILT * 2);
+          var rotX = (0.5 - py) * (MAX_TILT * 2);
+
+          inner.style.transform =
+            'rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translateY(-4px)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+          inner.style.transform = '';
+        });
+      });
+    })();
   </script>
 
 </body>
