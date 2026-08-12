@@ -228,6 +228,7 @@
           <ul class="skill-tech-list">
             <li class="tech-chip"><i class="devicon-git-plain colored" aria-hidden="true"></i><span>Git</span></li>
             <li class="tech-chip"><i class="devicon-github-original" aria-hidden="true"></i><span>GitHub</span></li>
+            <li class="tech-chip"><i class="devicon-figma-plain colored" aria-hidden="true"></i><span>Figma</span></li>
             <li class="tech-chip"><i class="devicon-vscode-plain colored" aria-hidden="true"></i><span>VS Code</span></li>
           </ul>
         </div>
@@ -375,33 +376,47 @@
       <p data-pt="Do primeiro «olá» ao site no ar, em quatro passos simples." data-en="From the first hello to a live website, in four simple steps.">Do primeiro «olá» ao site no ar, em quatro passos simples.</p>
     </div>
 
-    <div class="process-grid">
-      <div class="step-card">
-        <span class="step-num">1</span>
-        <div class="step-icon">💬</div>
+    <div class="pipeline" id="pipeline">
+      <div class="pipeline-track"><div class="pipeline-track-fill" id="pipelineFill"></div></div>
+
+      <div class="pipeline-step" data-step="0" tabindex="0" aria-label="Passo 1: Conversamos">
+        <div class="pipeline-node" id="pipelineNode0">
+          <span class="pipeline-node-num">01</span>
+          <i class="fa-solid fa-check pipeline-node-check" aria-hidden="true"></i>
+        </div>
         <h3 data-pt="Conversamos" data-en="We talk">Conversamos</h3>
         <p data-pt="Falamos sobre o teu negócio, os teus objetivos e o que precisas. Sem compromisso." data-en="We talk about your business, your goals and what you need. No commitment.">Falamos sobre o teu negócio, os teus objetivos e o que precisas. Sem compromisso.</p>
+        <span class="pipeline-status" id="pipelineStatus0" data-pt="pendente" data-en="pending">pendente</span>
       </div>
 
-      <div class="step-card">
-        <span class="step-num">2</span>
-        <div class="step-icon">🎨</div>
+      <div class="pipeline-step" data-step="1" tabindex="0" aria-label="Passo 2: Desenho e proponho">
+        <div class="pipeline-node" id="pipelineNode1">
+          <span class="pipeline-node-num">02</span>
+          <i class="fa-solid fa-check pipeline-node-check" aria-hidden="true"></i>
+        </div>
         <h3 data-pt="Desenho e proponho" data-en="I design & propose">Desenho e proponho</h3>
         <p data-pt="Preparo uma proposta e um design à tua medida, e mostro-te tudo antes de avançar." data-en="I prepare a proposal and a design tailored to you, and show you everything before moving on.">Preparo uma proposta e um design à tua medida, e mostro-te tudo antes de avançar.</p>
+        <span class="pipeline-status" id="pipelineStatus1" data-pt="pendente" data-en="pending">pendente</span>
       </div>
 
-      <div class="step-card">
-        <span class="step-num">3</span>
-        <div class="step-icon">⚙️</div>
+      <div class="pipeline-step" data-step="2" tabindex="0" aria-label="Passo 3: Desenvolvo">
+        <div class="pipeline-node" id="pipelineNode2">
+          <span class="pipeline-node-num">03</span>
+          <i class="fa-solid fa-check pipeline-node-check" aria-hidden="true"></i>
+        </div>
         <h3 data-pt="Desenvolvo" data-en="I build">Desenvolvo</h3>
         <p data-pt="Construo o site, rápido e adaptado ao telemóvel, mantendo-te sempre a par." data-en="I build the site, fast and mobile-friendly, keeping you in the loop throughout.">Construo o site, rápido e adaptado ao telemóvel, mantendo-te sempre a par.</p>
+        <span class="pipeline-status" id="pipelineStatus2" data-pt="pendente" data-en="pending">pendente</span>
       </div>
 
-      <div class="step-card">
-        <span class="step-num">4</span>
-        <div class="step-icon">🚀</div>
+      <div class="pipeline-step" data-step="3" tabindex="0" aria-label="Passo 4: Entrego e apoio">
+        <div class="pipeline-node" id="pipelineNode3">
+          <span class="pipeline-node-num">04</span>
+          <i class="fa-solid fa-check pipeline-node-check" aria-hidden="true"></i>
+        </div>
         <h3 data-pt="Entrego e apoio" data-en="I launch & support">Entrego e apoio</h3>
         <p data-pt="Publico o site e continuo por perto para atualizações, melhorias e suporte." data-en="I launch the site and stay around for updates, improvements and support.">Publico o site e continuo por perto para atualizações, melhorias e suporte.</p>
+        <span class="pipeline-status" id="pipelineStatus3" data-pt="pendente" data-en="pending">pendente</span>
       </div>
     </div>
   </section>
@@ -571,7 +586,7 @@
 
   <script>
     // revela elementos ao fazer scroll
-    const aRevelar = document.querySelectorAll(".step-card, .guarantee-card, .skill-card");
+    const aRevelar = document.querySelectorAll(".pipeline-step, .guarantee-card, .skill-card");
 
     const observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
@@ -715,6 +730,87 @@
           inner.style.transform = '';
         });
       });
+    })();
+  </script>
+
+  <script>
+    // "Como Trabalho": pipeline anima uma vez quando entra na vista
+    (function () {
+      var pipeline = document.getElementById('pipeline');
+      var fill = document.getElementById('pipelineFill');
+      if (!pipeline || !fill) return;
+
+      var TOTAL = 4;
+      var reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var textos = {
+        pendente: { pt: 'pendente', en: 'pending' },
+        running: { pt: 'em curso…', en: 'running…' },
+        done: { pt: 'concluído ✓', en: 'done ✓' }
+      };
+
+      function setStatusText(el, chave) {
+        var lang = (document.documentElement.lang === 'en') ? 'en' : 'pt';
+        el.setAttribute('data-pt', textos[chave].pt);
+        el.setAttribute('data-en', textos[chave].en);
+        el.textContent = textos[chave][lang];
+      }
+
+      function finalizarTudo() {
+        for (var k = 0; k < TOTAL; k++) {
+          var node = document.getElementById('pipelineNode' + k);
+          var status = document.getElementById('pipelineStatus' + k);
+          if (node) { node.classList.remove('is-active'); node.classList.add('is-done'); }
+          if (status) { status.classList.remove('is-running'); status.classList.add('is-done'); setStatusText(status, 'done'); }
+        }
+        fill.style.width = '100%';
+      }
+
+      if (reduzMovimento) {
+        finalizarTudo();
+        return;
+      }
+
+      function runStep(idx, done) {
+        var node = document.getElementById('pipelineNode' + idx);
+        var status = document.getElementById('pipelineStatus' + idx);
+
+        if (node) { node.classList.add('is-active'); }
+        if (status) { status.classList.add('is-running'); setStatusText(status, 'running'); }
+        fill.style.width = ((idx + 0.5) / TOTAL * 100) + '%';
+
+        setTimeout(function () {
+          if (node) { node.classList.remove('is-active'); node.classList.add('is-done'); }
+          if (status) { status.classList.remove('is-running'); status.classList.add('is-done'); setStatusText(status, 'done'); }
+          fill.style.width = ((idx + 1) / TOTAL * 100) + '%';
+          done();
+        }, 750);
+      }
+
+      function tocarSequencia() {
+        var idx = 0;
+        function proximo() {
+          if (idx >= TOTAL) return;
+          runStep(idx, function () {
+            idx++;
+            setTimeout(proximo, 180);
+          });
+        }
+        proximo();
+      }
+
+      var jaTocou = false;
+      var observadorPipeline = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting && !jaTocou) {
+            jaTocou = true;
+            setTimeout(tocarSequencia, 350);
+            observadorPipeline.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observadorPipeline.observe(pipeline);
     })();
   </script>
 

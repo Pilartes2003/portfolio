@@ -597,45 +597,128 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    /* Processo */
-    .process-grid {
+    /* Processo — Pipeline */
+    .pipeline {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+      padding-top: 8px;
     }
 
-    .step-card {
+    .pipeline-track {
+      position: absolute;
+      top: 27px;
+      left: calc(12.5% - 2px);
+      right: calc(12.5% - 2px);
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      z-index: 0;
+    }
+    .pipeline-track-fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--term-green), var(--accent));
+      box-shadow: 0 0 12px rgba(0,255,255,0.5);
+      border-radius: 3px;
+      transition: width 0.9s ease;
+    }
+
+    .pipeline-step {
       position: relative;
-      background: rgba(43, 53, 68, 0.45);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(43, 53, 68, 0.35);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
-      padding: 30px 24px;
+      padding: 26px 20px 22px;
       backdrop-filter: blur(12px);
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .step-card.show {
+    .pipeline-step.show {
       opacity: 1;
       transform: none;
     }
-
-    .step-card:nth-child(1){ transition-delay: 0s; }
-    .step-card:nth-child(2){ transition-delay: 0.12s; }
-    .step-card:nth-child(3){ transition-delay: 0.24s; }
-    .step-card:nth-child(4){ transition-delay: 0.36s; }
-
-    .step-num {
-      position: absolute;
-      top: 16px;
-      right: 22px;
-      font-size: 36px;
-      font-weight: bold;
-      color: rgba(0,255,255,0.22);
+    .pipeline-step:hover,
+    .pipeline-step:focus-visible {
+      border-color: rgba(0,255,255,0.3);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.3), 0 0 26px rgba(0,255,255,0.1);
     }
-    .step-icon { font-size: 34px; margin-bottom: 14px; }
-    .step-card h3 { color: #fff; margin-bottom: 10px; }
-    .step-card p { color: #b9cac9; font-size: 14px; line-height: 1.6; }
+    .pipeline-step:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0,255,255,0.6), 0 18px 40px rgba(0,0,0,0.3);
+    }
+
+    .pipeline-step:nth-child(2){ transition-delay: 0s; }
+    .pipeline-step:nth-child(3){ transition-delay: 0.12s; }
+    .pipeline-step:nth-child(4){ transition-delay: 0.24s; }
+    .pipeline-step:nth-child(5){ transition-delay: 0.36s; }
+
+    .pipeline-node {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(20, 27, 38, 0.8);
+      border: 2px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: #7c8aa5;
+      transition: border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+    .pipeline-node-check {
+      display: none;
+      font-size: 18px;
+    }
+    .pipeline-node.is-active {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    }
+    .pipeline-node.is-done {
+      border-color: var(--term-green);
+      color: var(--term-green);
+      background: rgba(61,220,132,0.1);
+    }
+    .pipeline-node.is-done .pipeline-node-num { display: none; }
+    .pipeline-node.is-done .pipeline-node-check { display: block; }
+
+    .pipeline-step h3 { color: #fff; margin-bottom: 10px; font-size: 17px; }
+    .pipeline-step p { color: #b9cac9; font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
+
+    .pipeline-status {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 5px;
+      color: #7c8aa5;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+    .pipeline-status.is-running {
+      color: var(--accent);
+      background: rgba(0,255,255,0.08);
+      border-color: rgba(0,255,255,0.25);
+    }
+    .pipeline-status.is-done {
+      color: var(--term-green);
+      background: rgba(61,220,132,0.08);
+      border-color: rgba(61,220,132,0.25);
+    }
 
     /* Garantias */
     .guarantees-grid {
@@ -787,11 +870,19 @@
       .about-grid,
       .projects-grid,
       .services-grid,
-      .process-grid,
       .guarantees-grid,
       .pricing-grid,
       .skills-cats {
         grid-template-columns: 1fr;
+      }
+
+      .pipeline {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .pipeline-track {
+        display: none;
       }
 
       .proj-grid {
@@ -863,15 +954,11 @@
 /* ---- toques finais: consistência "developer" no resto das secções ---- */
 .card h3,
 .proj-body h3,
-.step-card h3,
+.pipeline-step h3,
 .guarantee-card h3,
 .price-card h3 {
   font-family: var(--mono);
   font-weight: 600;
-}
-
-.step-num {
-  font-family: var(--mono);
 }
 
 .price {
@@ -1082,5 +1169,28 @@ footer strong {
   .tech-chip {
     transition: none !important;
     transform: none !important;
+  }
+
+  .pipeline-step {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+  .pipeline-track-fill {
+    width: 100% !important;
+    transition: none !important;
+  }
+  .pipeline-node,
+  .pipeline-node.is-active,
+  .pipeline-node.is-done {
+    border-color: var(--term-green);
+    color: var(--term-green);
+    background: rgba(61,220,132,0.1);
+  }
+  .pipeline-node .pipeline-node-num { display: none; }
+  .pipeline-node .pipeline-node-check { display: block; }
+  .pipeline-status {
+    color: var(--term-green) !important;
+    background: rgba(61,220,132,0.08) !important;
+    border-color: rgba(61,220,132,0.25) !important;
   }
 }
