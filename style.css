@@ -679,7 +679,11 @@
       color: #7c8aa5;
       transition: border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
     }
-    .pipeline-node-check {
+    /* Nota: o seletor tem de ser .pipeline-node .pipeline-node-check (e não só
+       .pipeline-node-check) porque o CSS do Font Awesome carrega depois deste
+       ficheiro e define display no .fa-solid — com mais especificidade aqui,
+       o nosso "escondido até estar concluído" ganha sempre. */
+    .pipeline-node .pipeline-node-check {
       display: none;
       font-size: 18px;
     }
