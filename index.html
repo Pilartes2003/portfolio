@@ -84,9 +84,9 @@
 <body>
 
   <nav>
-    <div class="logo"><span class="prompt-user">tommy</span><span class="prompt-sep">@</span><span class="prompt-path">dev</span><span class="prompt-sep">:~$</span></div>
+    <div class="logo cursor"><span class="prompt-user">tommy</span><span class="prompt-sep">@</span><span class="prompt-path">dev</span><span class="prompt-sep">:~$</span></div>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
       <li><a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a></li>
       <li><a href="#services" data-pt="Serviços" data-en="Services">Serviços</a></li>
@@ -95,7 +95,12 @@
 
     <div class="nav-right">
       <button id="langToggle" class="lang-toggle" type="button" aria-label="Change language">EN</button>
-      <a href="#contact" class="btn" data-pt="Fala Comigo" data-en="Let's Talk">Fala Comigo</a>
+      <a href="#contact" class="btn nav-cta" data-pt="Fala Comigo" data-en="Let's Talk">Fala Comigo</a>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
     </div>
   </nav>
 
@@ -194,14 +199,13 @@
       Para adicionar/remover uma tecnologia, basta editar a lista <ul class="skill-tech-list">
       dentro do cartão certo — cada tecnologia é um <li> independente com o ícone (devicon)
       e o nome. Para adicionar uma categoria nova, duplica um <article class="skill-card"> inteiro
-      e muda o número, ícone, título, descrição e lista de tecnologias.
+      e muda o ícone, título, descrição e lista de tecnologias.
     -->
     <div class="skills-cards-grid">
 
       <article class="skill-card" tabindex="0" aria-label="Frontend: HTML5, CSS3, JavaScript, React">
         <div class="skill-card-tilt">
           <div class="skill-card-top">
-            <span class="skill-num">01</span>
             <div class="skill-visual"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
           </div>
           <h3 data-pt="Frontend" data-en="Frontend">Frontend</h3>
@@ -218,7 +222,6 @@
       <article class="skill-card" tabindex="0" aria-label="Backend: PHP, MySQL, Node.js">
         <div class="skill-card-tilt">
           <div class="skill-card-top">
-            <span class="skill-num">02</span>
             <div class="skill-visual"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
           </div>
           <h3 data-pt="Backend" data-en="Backend">Backend</h3>
@@ -234,7 +237,6 @@
       <article class="skill-card" tabindex="0" aria-label="Ferramentas: Git, GitHub, Figma, VS Code">
         <div class="skill-card-tilt">
           <div class="skill-card-top">
-            <span class="skill-num">03</span>
             <div class="skill-visual"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></div>
           </div>
           <h3 data-pt="Ferramentas" data-en="Tools">Ferramentas</h3>
@@ -760,6 +762,33 @@
       }, { threshold: 0.35 });
 
       observadorPipeline.observe(pipeline);
+    })();
+  </script>
+
+  <script>
+    // menu hambúrguer do telemóvel
+    (function () {
+      var menuToggle = document.getElementById('menuToggle');
+      var navLinks = document.getElementById('navLinks');
+      if (!menuToggle || !navLinks) return;
+
+      function setOpen(aberto) {
+        navLinks.classList.toggle('open', aberto);
+        menuToggle.classList.toggle('open', aberto);
+        menuToggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        setOpen(!navLinks.classList.contains('open'));
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 900) setOpen(false);
+      });
     })();
   </script>
 

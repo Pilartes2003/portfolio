@@ -89,17 +89,58 @@
 
     .logo {
       font-family: var(--mono);
-      font-size: 17px;
-      font-weight: 600;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       color: #fff;
       display: flex;
       align-items: center;
       gap: 2px;
     }
     .logo .prompt-user { color: var(--term-green); }
-    .logo .prompt-sep { color: #b9cac9; }
+    .logo .prompt-sep { color: #b9cac9; font-weight: 500; }
     .logo .prompt-path { color: var(--accent); }
     .logo .prompt-sym { color: #b9cac9; margin-right: 6px; }
+    .logo.cursor::after { height: 0.85em; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .menu-toggle:hover {
+      border-color: rgba(0,255,255,0.4);
+    }
+    .menu-toggle-bar {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+      transition: transform 0.25s ease, opacity 0.2s ease, background 0.3s ease;
+    }
+    .menu-toggle:hover .menu-toggle-bar {
+      background: var(--accent);
+    }
+    .menu-toggle.open .menu-toggle-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.open .menu-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open .menu-toggle-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     .nav-right {
       display: flex;
@@ -146,7 +187,7 @@
     .btn {
       padding: 12px 22px;
       border-radius: 8px;
-      background: linear-gradient(90deg, #00ffff, #7f00ff);
+      background: var(--accent);
       color: #001;
       font-weight: 700;
       font-family: var(--mono);
@@ -176,7 +217,7 @@
       text-align: center;
       background:
         radial-gradient(circle at 20% 20%, rgba(0,255,255,0.08), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(127,0,255,0.08), transparent 35%);
+        radial-gradient(circle at 80% 80%, rgba(0,255,255,0.05), transparent 40%);
     }
 
     .hero-content {
@@ -376,7 +417,7 @@
     }
     .pchip:hover { border-color: rgba(0,255,255,0.4); color: #00ffff; }
     .pchip.on {
-      background: linear-gradient(90deg, #00ffff, #7f00ff);
+      background: var(--accent);
       color: #001;
       border-color: transparent;
     }
@@ -419,7 +460,7 @@
     .proj-thumb {
       height: 150px;
       overflow: hidden;
-      background: linear-gradient(135deg, #00ffff22, #7f00ff22);
+      background: rgba(0,255,255,0.08);
     }
     .proj-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .proj-body { padding: 20px; }
@@ -452,12 +493,22 @@
       font-size: 13px;
       padding: 9px;
       border-radius: 8px;
-      background: linear-gradient(90deg, #00ffff, #7f00ff);
-      color: #fff;
+      background: var(--accent);
+      color: #001;
       font-weight: bold;
       transition: 0.3s;
     }
     .proj-links a:hover { opacity: 0.85; }
+    /* segundo link (ex.: "Código") vira estilo "ghost" — só o principal fica preenchido */
+    .proj-links a:not(:first-child) {
+      background: transparent;
+      border: 1px solid rgba(0,255,255,0.35);
+      color: var(--accent);
+    }
+    .proj-links a:not(:first-child):hover {
+      background: rgba(0,255,255,0.08);
+      opacity: 1;
+    }
 
     .featured-project {
       display: grid;
@@ -754,7 +805,7 @@
       text-align: center;
       background:
         radial-gradient(circle at bottom left, rgba(0,255,255,0.12), transparent 35%),
-        radial-gradient(circle at top right, rgba(127,0,255,0.12), transparent 35%);
+        radial-gradient(circle at top right, rgba(0,255,255,0.07), transparent 35%);
     }
 
     .contact-box {
@@ -792,8 +843,48 @@
     }
 
     @media (max-width: 900px) {
+      nav { position: fixed; }
+
       .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 2px;
+        background: rgba(9, 20, 33, 0.97);
+        backdrop-filter: blur(12px);
+        padding: 8px 8% 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 4px;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .nav-links li:last-child a {
+        border-bottom: none;
+      }
+
+      .nav-right .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
       }
 
       .hero h1 {
@@ -830,6 +921,12 @@
         flex-direction: column;
         gap: 15px;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .proj-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -978,17 +1075,7 @@ footer strong {
 .skill-card-top {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   margin-bottom: 22px;
-}
-
-.skill-num {
-  font-family: var(--mono);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 1px;
-  opacity: 0.75;
 }
 
 .skill-visual {
@@ -998,7 +1085,7 @@ footer strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(0,255,255,0.12), rgba(127,0,255,0.12));
+  background: linear-gradient(135deg, rgba(0,255,255,0.18), rgba(0,255,255,0.04));
   border: 1px solid rgba(255,255,255,0.08);
   color: #fff;
   font-size: 20px;
